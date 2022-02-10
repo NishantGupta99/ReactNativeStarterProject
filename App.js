@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:"column",
     backgroundColor: '#C73AF8',
-    alignItems: 'strech',
+    alignItems: 'stretch',
     justifyContent: 'center',
     // borderBottomColor: "#FF1106",
     // borderWidth:10,
