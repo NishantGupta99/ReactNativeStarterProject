@@ -12,7 +12,7 @@ class Form extends React.Component {
     }
     
     submit(name,age) {
-        
+        console.log("button works");
         axios.post("http://10.0.2.2:8000/users" ,  {
             name: this.state.name,
             age: this.state.age
