@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 // import type {Node} from 'react';
 import {RefreshControl, ScrollView, StyleSheet, Text, View} from 'react-native';
+import Flat from './components/flatlist';
 const App = () => {
   const [Items, setItems] = useState([
     {key: 1, item: 'Item 1'},
@@ -22,16 +23,18 @@ const App = () => {
     setRefreshing(false)
   }
   return (
-    
-      <ScrollView style={styles.body} refreshControl={<RefreshControl refreshing={Refreshing} onRefresh={onRefresh} colors={['#F08914']} />}>
-      {Items.map(i => {
-        return (
-          <View style={styles.item} key={i.key}>
-            <Text style={styles.text}>{i.item}</Text>
-          </View>
-        );
-      })}
-      </ScrollView>
+     <Flat/>
+    // <ScrollView style={styles.body} refreshControl={<RefreshControl refreshing={Refreshing} onRefresh={onRefresh} colors={['#F08914']} />}>
+    //   {Items.map(i => {
+    //     return (
+    //       <View style={styles.item} key={i.key}>
+    //         <Text style={styles.text}>{i.item}</Text>
+
+    //       </View>
+    //     );
+    //   })}
+     
+    //   </ScrollView>
     
   );
 };
