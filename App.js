@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 // import type {Node} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {RefreshControl, ScrollView, StyleSheet, Text, View} from 'react-native';
 const App = () => {
   const [Items, setItems] = useState([
     {key: 1, item: 'Item 1'},
@@ -15,25 +15,31 @@ const App = () => {
     {key: 10, item: 'Item 10'},
     {key: 11, item: 'Item 11'},
   ]);
+  const [Refreshing, setRefreshing] = useState(false)
+  const onRefresh = () => {
+    setRefreshing(true);
+    setItems([...Items, {key: 400, item : 'Item 400'}]);
+    setRefreshing(false)
+  }
   return (
-    <View style={styles.body}>
-      <ScrollView>
+    
+      <ScrollView style={styles.body} refreshControl={<RefreshControl refreshing={Refreshing} onRefresh={onRefresh} colors={['#F08914']} />}>
       {Items.map(i => {
         return (
-          <View style={styles.item}>
+          <View style={styles.item} key={i.key}>
             <Text style={styles.text}>{i.item}</Text>
           </View>
         );
       })}
       </ScrollView>
-    </View>
+    
   );
 };
 
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     backgroundColor: '#FFFFFF',
     // alignItems: 'stretch',
     // justifyContent: 'center',
