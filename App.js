@@ -13,50 +13,32 @@ import {
   createStackNavigator,
   GestureHandlerRootView,
 } from '@react-navigation/stack';
+import ScreenA from './components/ScreenA';
+import ScreenB from './components/ScreenB';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Stack = createStackNavigator();
 
-function ScreenA({navigation}) {
-  const onPressHandler = () => {
-    navigation.navigate('Screen_B');
-  };
-  return (
-    <View>
-      <Text>Screen A</Text>
-      <Pressable
-        onPress={onPressHandler}
-        style={({pressed}) => ({backgroundColor: pressed ? '#ddd' : '#0fb'})}>
-        <Text style={styles.text}>Go back to screen B</Text>
-      </Pressable>
-    </View>
-  );
-}
-function ScreenB() {
-  return (
-    <View style={styles.body}>
-      <Text style={styles.text}>Welcome to Screen B</Text>
-    </View>
-  );
-}
+const Tab = createBottomTabNavigator();
+
+
+
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Screen A" component={ScreenA} />
-        <Stack.Screen name="Screen_B" component={ScreenB} />
-      </Stack.Navigator>
-    </NavigationContainer>
+   <NavigationContainer>
+   <Tab.Navigator screenOptions={({route}) => ({tabBarIcon:({focused, size , color}) => {
+     let iconName;
+     if(route.name==='ScreenA') {
+      iconName= 'amilia'
+     }
+     else if (route.name==='ScreenB') {
+      iconName= 'bell'
+     }
+   }})}>
+     <Tab.Screen  name="Screen_A" component={ScreenA} />
+     <Tab.Screen name="Screen_B" component={ScreenB} />
+   </Tab.Navigator>
+ </NavigationContainer>
   );
 };
-const styles =StyleSheet.create ({
-  body: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  text: {
-    fontSize: 40
-  }
-})
 
 export default App;
