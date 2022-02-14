@@ -10,8 +10,9 @@ import {
 } from 'react-native';
 function ScreenB({navigation}) {
     const onPressHandler = () => {
-      navigation.navigate('Screen_A');
-   //  navigation.goBack(); // to go back to the previous stack 
+      //navigation.navigate('Screen_A');
+      
+    navigation.goBack(); // to go back to the previous stack 
     };
     return (
       <View style={styles.body}>

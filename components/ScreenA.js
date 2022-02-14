@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 function ScreenA({navigation}) {
     const onPressHandler = () => {
-     // navigation.navigate('Screen_B');
-      navigation.replace('Screen_B');
+     navigation.navigate('Screen_B');
+      //navigation.replace('Screen_B');
     };
     return (
       <View style={styles.body}>
