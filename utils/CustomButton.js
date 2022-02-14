@@ -16,7 +16,7 @@ const CustomButton = (props) => {
             {...props.style}
         ]}
         >
-            <Text style={StyleSheet.text}>
+            <Text style={styles.text}>
                 {props.title}
 
             </Text>
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         height:  50,
         alignItems: 'center',
         borderRadius: 5,
-        mmargin: 10,
+        margin: 10,
     }
 
 })

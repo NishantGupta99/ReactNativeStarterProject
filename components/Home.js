@@ -8,19 +8,18 @@ import {
   View,
   Pressable,
 } from 'react-native';
-function ScreenB({navigation}) {
+function Home({navigation}) {
     const onPressHandler = () => {
-      //navigation.navigate('Screen_A');
-      
-    navigation.goBack(); // to go back to the previous stack 
+     navigation.navigate('Screen_B');
+      //navigation.replace('Screen_B');
     };
     return (
       <View style={styles.body}>
-        <Text style={styles.text}>Welcome to Screen B</Text>
+        <Text  style={styles.text}>Screen A</Text>
         <Pressable
           onPress={onPressHandler}
           style={({pressed}) => ({backgroundColor: pressed ? '#ddd' : '#0fb'})}>
-          <Text style={styles.text}>Go to screen A</Text>
+          <Text style={styles.text}>Go to screen B</Text>
         </Pressable>
       </View>
     );
@@ -36,4 +35,4 @@ function ScreenB({navigation}) {
     }
   })
    
-  export default ScreenB
+  export default Home;

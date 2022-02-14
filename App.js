@@ -9,46 +9,37 @@ import {
   Pressable,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {
-  createStackNavigator,
-  GestureHandlerRootView,
-} from '@react-navigation/stack';
-import ScreenA from './components/ScreenA';
-import ScreenB from './components/ScreenB';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import {createStackNavigator} from '@react-navigation/stack';
+import Home from './components/Home';
+import Login from './components/Login';
 
-
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 
 
 const App = () => { 
   return (
    <NavigationContainer>
-   <Tab.Navigator screenOptions={({route}) => ({tabBarIcon:({focused, size , color}) => {
-     let iconName;
-     if(route.name==='ScreenA') {
-      iconName= 'amilia';
-      size= focused? 25:20;
-      color= '#60B82D'
+   <Stack.Navigator initialRouteName= "Login" screenOptions= {{ 
+     headerTitleAlign: 'center',
+     headerStyle: { 
+       backgroundColor: '#0080ff'
+     },
+     headerTintColor : '#ffffff',
+     headerTintStyle : {
+
+       fontSize: 25,
+       fontWeight : 'bold'
      }
-     else if (route.name==='ScreenB') {
-      iconName= 'bell';
-      size= focused? 25:20;
-      color= '#60B82D'
-     }
-     return (
-       <FontAwesome5 
-       name={iconName}
-       size={size}
-       color={color}
-       />
-     )
-   }})}>
-     <Tab.Screen  name="Screen_A" component={ScreenA} />
-     <Tab.Screen name="Screen_B" component={ScreenB} />
-   </Tab.Navigator>
+   }}>
+
+     <Stack.Screen name="Login" component={Login}
+     options={{headerShown:  false}}/>
+
+     <Stack.Screen name="Home" component={Home} />
+    
+   
+   </Stack.Navigator>
  </NavigationContainer>
   );
 };
